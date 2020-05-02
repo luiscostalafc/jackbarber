@@ -46,7 +46,7 @@ export default function Profile() {
 			</Form>
 
 			<button type="button" onClick={handleSignOut}>
-				Sair do GoBarber
+				Sair do JackBarber
 			</button>
 		</Container>
 	);

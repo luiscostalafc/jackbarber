@@ -2,6 +2,9 @@ import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
 
+import EnrollmentMail from '../jobs/EnrollmentMail';
+import Queue from '../../lib/Queue';
+
 class UserController {
 	async store(req, res) {
 		const schema = Yup.object().shape({
@@ -25,6 +28,12 @@ class UserController {
 		}
 
 		const { id, name, email, provider } = await User.create(req.body);
+
+		await Queue.add(EnrollmentMail.key, {
+			id,
+			name,
+			email
+		});
 
 		return res.json({
 			id,

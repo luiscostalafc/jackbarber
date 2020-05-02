@@ -41,7 +41,7 @@ export default function SelectDateTime({ navigation }) {
 				<DateInput date={date} onChange={setDate} />
 				<HourList
 					data={hours}
-					keyExtractor={item => item.time}
+					keyExtractor={item => String(item.time)}
 					renderItem={({ item }) => (
 						<Hour
 							onPress={() => handleSelectHour(item.value)}
