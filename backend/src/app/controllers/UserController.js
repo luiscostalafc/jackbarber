@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
 import Category from '../models/Category';
+import Address from '../models/Address';
 
 //import EnrollmentMail from '../jobs/EnrollmentMail';
 //import Queue from '../../lib/Queue';
@@ -90,11 +91,20 @@ class UserController {
 						model: File,
 						as: 'avatar',
 						attributes: ['id', 'path', 'url'],
-
+					},
+					{
 						model: Category,
 						as: 'category',
 						attributes: ['id', 'name'],
 					},
+
+           {
+            model: Address,
+						as: 'address',
+						attributes: ['id', 'street', 'number', 'complement', 'zipcode', 'district', 'city', 'state', 'phone'],
+					 },
+
+
 				],
 			}
 		);

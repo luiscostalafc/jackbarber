@@ -4,10 +4,9 @@ import Address from '../models/Address';
 class AddressController {
 	async store(req, res) {
 		const schema = Yup.object().shape({
-			user_name: Yup.number().riquired(),
-			user_email: Yup.string()
-				.email()
-				.required(),
+			address_street: Yup.string().riquired(),
+			address_number: Yup.number().required(),
+			user_
 		});
 
 		if (!(await schema.isValid(req.body))) {

@@ -1,6 +1,7 @@
 import User from '../models/User';
 import File from '../models/File';
 import Category from '../models/Category';
+import Address from '../models/Address';
 
 class ProviderController {
 	async index(req, res) {
@@ -17,6 +18,11 @@ class ProviderController {
 					model: Category,
 					as: 'category',
 					attributes: ['name'],
+				},
+				{
+					model: Address,
+					as: 'address',
+					attributes: ['id', 'street', 'number', 'complement', 'zipcode', 'district', 'city', 'state', 'phone'],
 				}
 			],
 		});
