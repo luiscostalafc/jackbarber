@@ -1,16 +1,17 @@
 import React, { useMemo } from 'react';
 import { formatRelative, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-
-import api from '~/services/api';
-import navigations from '~/services/navigations';
-
-
-import Background from '~/components/Background';
-import { Container, Avatar, Name, Time, SubmitButton } from './styles';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import PropTypes from 'prop-types';
+
+import api from '~/services/api';
+import Background from '~/components/Background';
+
+//import navigations from '~/services/navigations';
+
+
+import { Container, Avatar, Name, Time, SubmitButton } from './styles';
+
 
 
 
@@ -18,7 +19,7 @@ export default function Confirm({ navigation }) {
 	const provider = navigation.getParam('provider');
 	const time = navigation.getParam('time');
 
-	const dateFormated = useMemo(
+	const dateFormatted = useMemo(
 		() => formatRelative(parseISO(time), new Date(), { locale: pt }),
 		[time]
 	);
@@ -27,8 +28,9 @@ export default function Confirm({ navigation }) {
 		await api.post('appointments', {
 			provider_id: provider.id,
 			date: time,
+
 		});
-    navigations.navigate('Dashboard');
+    navigation.navigate('Dashboard');
 
 	}
 
@@ -38,14 +40,14 @@ export default function Confirm({ navigation }) {
 				<Avatar
 					source={{
 						uri: provider.avatar
-							? provider.avatar.url.replace('localhost', '192.168.0.2')
+							? provider.avatar.url
 							: `https://api.adorable.io/avatar/50/${provider.name}.png`,
 					}}
 				/>
 
 				<Name>{provider.name}</Name>
 
-				<Time>{dateFormated}</Time>
+				<Time>{dateFormatted}</Time>
 
 				<SubmitButton onPress={handleAddAppointment}>
 					Confirmar agendamento
@@ -55,12 +57,12 @@ export default function Confirm({ navigation }) {
 	);
 }
 
-Confirm.navigationOptions = () => ({
+Confirm.navigationOptions = ({ navigation }) => ({
 	title: 'Confirmar agendamento',
 	headerLeft: () => (
 		<TouchableOpacity
 			onPress={() => {
-				navigations.navigate('Dashboard');
+				navigation.goBack();
 			}}
 		>
 			<Icon name="chevron-left" size={20} color="#fff" />
@@ -68,9 +70,3 @@ Confirm.navigationOptions = () => ({
 	),
 });
 
-Confirm.propTypes = {
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		getParam: PropTypes.func.isRequired,
-	}).isRequired,
-};

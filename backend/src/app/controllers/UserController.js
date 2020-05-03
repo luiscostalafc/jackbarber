@@ -1,9 +1,10 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
+import Category from '../models/Category';
 
-import EnrollmentMail from '../jobs/EnrollmentMail';
-import Queue from '../../lib/Queue';
+//import EnrollmentMail from '../jobs/EnrollmentMail';
+//import Queue from '../../lib/Queue';
 
 class UserController {
 	async store(req, res) {
@@ -29,11 +30,11 @@ class UserController {
 
 		const { id, name, email, provider } = await User.create(req.body);
 
-		await Queue.add(EnrollmentMail.key, {
-			id,
-			name,
-			email
-		});
+		// await Queue.add(EnrollmentMail.key, {
+		// 	id,
+		// 	name,
+		// 	email
+		// });
 
 		return res.json({
 			id,
@@ -81,7 +82,7 @@ class UserController {
 
 		await user.update(req.body);
 
-		const { id, name, email: NewEmail, avatar } = await User.findByPk(
+		const { id, name, email: NewEmail, avatar, category } = await User.findByPk(
 			req.userId,
 			{
 				include: [
@@ -89,6 +90,10 @@ class UserController {
 						model: File,
 						as: 'avatar',
 						attributes: ['id', 'path', 'url'],
+
+						model: Category,
+						as: 'category',
+						attributes: ['id', 'name'],
 					},
 				],
 			}
@@ -99,6 +104,7 @@ class UserController {
 			name,
 			email: NewEmail,
 			avatar,
+			category
 		});
 	}
 }

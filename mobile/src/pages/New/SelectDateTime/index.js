@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import PropTypes from 'prop-types';
-
 import api from '~/services/api';
+
 
 import Background from '~/components/Background';
 import DateInput from '~/components/DateInput';
@@ -19,7 +18,7 @@ export default function SelectDateTime({ navigation }) {
 
 	useEffect(() => {
 		async function loadAvailable() {
-			const response = await api.get(`providers/${provider.id}/available`, {
+			const response = await api.get(`/providers/${provider.id}/available`, {
 				params: {
 					date: date.getTime(),
 				},
@@ -41,7 +40,8 @@ export default function SelectDateTime({ navigation }) {
 				<DateInput date={date} onChange={setDate} />
 				<HourList
 					data={hours}
-					keyExtractor={item => String(item.time)}
+					extraData={date}
+					keyExtractor={item => (item.time)}
 					renderItem={({ item }) => (
 						<Hour
 							onPress={() => handleSelectHour(item.value)}
@@ -69,9 +69,3 @@ SelectDateTime.navigationOptions = ({ navigation }) => ({
 	),
 });
 
-SelectDateTime.propTypes = {
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		getParam: PropTypes.func.isRequired,
-	}).isRequired,
-};

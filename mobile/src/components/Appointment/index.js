@@ -18,7 +18,7 @@ export default function Appointment({ data, onCancel }) {
 	}, [data.date]);
 
 	return (
-		<Container past={data.past}>
+		<Container past={data.past} canceled={data.canceled_at}>
 			<Left>
 				<Avatar
 					source={{
