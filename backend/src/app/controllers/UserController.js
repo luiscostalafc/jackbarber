@@ -17,6 +17,7 @@ class UserController {
 			password: Yup.string()
 				.required()
 				.min(6),
+
 		});
 
 		if (!(await schema.isValid(req.body))) {
@@ -29,7 +30,23 @@ class UserController {
 			return res.status(400).json({ error: 'User already exists' });
 		}
 
-		const { id, name, email, provider } = await User.create(req.body);
+		const { id, name, email, provider, address } = await User.create(
+			req.body,
+			{
+				include: [
+
+					 {
+						model: Address,
+						as: 'address',
+						attributes: ['id', 'street', 'number', 'complement', 'zipcode', 'district', 'city', 'state', 'phone'],
+					 }
+
+				],
+
+			}
+
+			);
+
 
 		// await Queue.add(EnrollmentMail.key, {
 		// 	id,
@@ -42,6 +59,7 @@ class UserController {
 			name,
 			email,
 			provider,
+			address,
 		});
 	}
 
@@ -114,7 +132,8 @@ class UserController {
 			name,
 			email: NewEmail,
 			avatar,
-			category
+			category,
+			address,
 		});
 	}
 }

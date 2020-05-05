@@ -49,6 +49,7 @@ export default function SignUp({ navigation }) {
 						value={name}
 						onChangeText={setName}
 					/>
+
 					<FormInput
 						icon="mail-outline"
 						keyboardType="email-address"

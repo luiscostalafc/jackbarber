@@ -4,8 +4,10 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import Geo from './pages/Geo';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SingUp';
+
 
 import SelectProvider from './pages/New/SelectProvider';
 import SelectDateTime from './pages/New/SelectDateTime';
@@ -20,6 +22,7 @@ export default (signedIn = false) =>
 		createSwitchNavigator(
 			{
 				Sign: createSwitchNavigator({
+					Geo,
 					SignIn,
 					SignUp,
 				}),
@@ -58,6 +61,7 @@ export default (signedIn = false) =>
 						},
 						Profile,
 					},
+
 					{
 						resetOnBlur: true,
 						tabBarOptions: {
@@ -69,6 +73,7 @@ export default (signedIn = false) =>
 							},
 						},
 					},
+
 
 
 

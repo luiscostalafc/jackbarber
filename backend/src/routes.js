@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import multerConfig from './config/multer';
 
+import PointController from './app/controllers/PointController';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
@@ -23,6 +24,9 @@ routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
+routes.get('/points', PointController.index);
+routes.post('/points', PointController.store);
+
 routes.put('/users', UserController.update);
 
 routes.get('/providers', ProviderController.index);
@@ -42,5 +46,7 @@ routes.put('/adresses/:id', AddressController.update)
 
 routes.post('/files', upload.single('file'), FileController.store);
 routes.post('/categories', upload.single('category'), CategoryController.store);
+
+
 
 export default routes;
