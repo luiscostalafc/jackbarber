@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
+import navigations from '~/services/navigations';
 
 
 import Background from '~/components/Background';
@@ -31,7 +32,7 @@ export default function SelectDateTime({ navigation }) {
 	}, [date, provider.id]);
 
 	function handleSelectHour(time) {
-		navigation.navigate('Confirm', { provider, time });
+		navigations.navigate('Confirm', { provider, time, });
 	}
 
 	return (

@@ -10,15 +10,13 @@ class Point extends Model {
         longitude: Sequelize.DECIMAL(6, 9),
       },
       {
-        sequelize
+        sequelize,
       }
 		);
 
 		return this;
 	}
-	static associate(models) {
-		this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
-	}
+
 }
 
 export default Point;

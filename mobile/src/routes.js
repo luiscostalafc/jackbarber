@@ -22,12 +22,12 @@ export default (signedIn = false) =>
 		createSwitchNavigator(
 			{
 				Sign: createSwitchNavigator({
-					Geo,
 					SignIn,
 					SignUp,
 				}),
 				App: createBottomTabNavigator(
 					{
+
 						Dashboard,
 						New: {
 							screen: createStackNavigator(
@@ -59,6 +59,7 @@ export default (signedIn = false) =>
 								),
 							},
 						},
+						Geo,
 						Profile,
 					},
 
@@ -73,9 +74,6 @@ export default (signedIn = false) =>
 							},
 						},
 					},
-
-
-
 
 
 				),

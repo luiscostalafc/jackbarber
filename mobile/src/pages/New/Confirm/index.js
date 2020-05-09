@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '~/services/api';
 import Background from '~/components/Background';
 
-//import navigations from '~/services/navigations';
+import navigations from '~/services/navigations';
 
 
 import { Container, Avatar, Name, Time, SubmitButton } from './styles';
@@ -30,7 +30,7 @@ export default function Confirm({ navigation }) {
 			date: time,
 
 		});
-    navigation.navigate('Dashboard');
+    navigations.navigate('Dashboard');
 
 	}
 

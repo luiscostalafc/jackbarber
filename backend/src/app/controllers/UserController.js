@@ -2,7 +2,6 @@ import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
 import Category from '../models/Category';
-import Address from '../models/Address';
 
 //import EnrollmentMail from '../jobs/EnrollmentMail';
 //import Queue from '../../lib/Queue';
@@ -30,18 +29,10 @@ class UserController {
 			return res.status(400).json({ error: 'User already exists' });
 		}
 
-		const { id, name, email, provider, address } = await User.create(
+		const { id, name, email, provider} = await User.create(
 			req.body,
 			{
-				include: [
 
-					 {
-						model: Address,
-						as: 'address',
-						attributes: ['id', 'street', 'number', 'complement', 'zipcode', 'district', 'city', 'state', 'phone'],
-					 }
-
-				],
 
 			}
 
@@ -59,7 +50,6 @@ class UserController {
 			name,
 			email,
 			provider,
-			address,
 		});
 	}
 
@@ -116,12 +106,6 @@ class UserController {
 						attributes: ['id', 'name'],
 					},
 
-           {
-            model: Address,
-						as: 'address',
-						attributes: ['id', 'street', 'number', 'complement', 'zipcode', 'district', 'city', 'state', 'phone'],
-					 },
-
 
 				],
 			}
@@ -133,7 +117,6 @@ class UserController {
 			email: NewEmail,
 			avatar,
 			category,
-			address,
 		});
 	}
 }

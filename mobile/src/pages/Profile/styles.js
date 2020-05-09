@@ -23,21 +23,21 @@ export const Separator = styled.View`
 
 export const Form = styled.ScrollView.attrs({
 	showsVerticalScrollIndicator: false,
-	contentContainerStyle: { padding: 30 },
+	contentContainerStyle: { padding: 15 },
 })`
 	align-self: stretch;
 `;
 
 export const FormInput = styled(Input)`
-	margin-bottom: 10px;
+	margin-bottom: 3px;
 `;
 
 export const SubmitButton = styled(Button)`
-	margin-top: 5px;
+	margin-top: 3px;
 	background: #008b45;
 `;
 
 export const LogoutButton = styled(Button)`
-	margin-top: 10px;
+	margin-top: 3px;
 	background: #f64c75;
 `;

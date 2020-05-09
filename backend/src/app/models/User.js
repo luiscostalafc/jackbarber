@@ -28,8 +28,6 @@ class User extends Model {
 	static associate(models) {
 		this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
 		this.belongsTo(models.Category, { foreignKey: 'category_id', as: 'category' });
-		this.belongsTo(models.Address, { foreignKey: 'address_id', as: 'address' });
-		this.belongsTo(models.Point, { foreignKey: 'point_id', as: 'point' });
 
 	}
 
