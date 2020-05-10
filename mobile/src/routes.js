@@ -13,18 +13,41 @@ import SelectProvider from './pages/New/SelectProvider';
 import SelectDateTime from './pages/New/SelectDateTime';
 import Confirm from './pages/New/Confirm';
 
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import Header from './components/Header';
+import colors from './styles/colors';
+
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 
 
 export default (signedIn = false) =>
 	createAppContainer(
+
 		createSwitchNavigator(
 			{
 				Sign: createSwitchNavigator({
 					SignIn,
 					SignUp,
 				}),
+        Cart: createStackNavigator(
+					{
+						Home,
+						Cart,
+					},
+					{
+						// initialRouteName: 'Cart',
+						defaultNavigationOptions: navigation => ({
+							header: <Header {...navigation} />,
+						}),
+						cardStyle: {
+							backgroundColor: colors.dark,
+						},
+					}
+
+					),
+
 				App: createBottomTabNavigator(
 					{
 

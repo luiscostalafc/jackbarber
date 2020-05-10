@@ -6923,6 +6923,11 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
+pagarme@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/pagarme/-/pagarme-4.8.0.tgz#cb4f830405129194880d6ea152e0d1d76ac04190"
+  integrity sha512-H04O7Zwn2xdVlu69G86olCpl6O6gvFhUN0KZEuIa/J3jUUQhnxhq/k9chP2E9SKZXL+I8vwkf6c06VOk+hUtcw==
+
 pako@~1.0.5:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
@@ -7454,6 +7459,11 @@ react-native-animatable@^1.3.3:
   dependencies:
     prop-types "^15.7.2"
 
+react-native-cielo@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-cielo/-/react-native-cielo-1.0.1.tgz#bb84201559c674ee4c7b113711e4627eadb0cbe6"
+  integrity sha512-vlNai8+hwS2cKOnueSP3s3s4Uz+5ub1glCSvLS4dnn3X6R/sZ7p5RC2X8hYr/s/grJj6Yg34N3XMQYdxFwfROw==
+
 react-native-dotenv@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-0.2.0.tgz#311551cb6a35a3dcfede648bded55c0e3ece579d"
@@ -7491,6 +7501,11 @@ react-native-google-places-autocomplete@^1.4.1:
     lodash.debounce "^4.0.8"
     prop-types "^15.5.10"
     qs "^5.2.0"
+
+react-native-intl@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-intl/-/react-native-intl-1.0.0.tgz#c1e2281125f925b323d1c8837586774876abe703"
+  integrity sha1-weIoESX5JbMj0ciDdYZ3SHar5wM=
 
 react-native-linear-gradient@^2.5.6:
   version "2.5.6"

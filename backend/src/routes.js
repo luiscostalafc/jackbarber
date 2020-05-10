@@ -2,16 +2,21 @@ import { Router } from 'express';
 import multer from 'multer';
 import multerConfig from './config/multer';
 
+//User
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import ProviderController from './app/controllers/ProviderController';
 import CategoryController from './app/controllers/CategoryController';
-import PointController from './app/controllers/PointController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
 import NotificationController from './app/controllers/NotificationController';
 import AvailableController from './app/controllers/AvailableController';
+
+//Map
+import PointController from './app/controllers/PointController';
+
+//Prestador
 import RecipientController from './app/controllers/RecipientController';
 import DeliverymanController from './app/controllers/DeliverymanController';
 import DeliveryController from './app/controllers/DeliveryController';
@@ -21,6 +26,12 @@ import DeliveryWithDrawController from './app/controllers/DeliveryWithDrawContro
 import DeliveryFinishController from './app/controllers/DeliveryFinishController';
 import DeliveryProblem from './app/controllers/DeliveryProblemController';
 
+//Pagamento
+import ProductController from './app/controllers/ProductController';
+import StockController from './app/controllers/StockController';
+import CheckoutController from './app/controllers/CheckoutController';
+import CardController from './app/controllers/CardController';
+import TransactionController from './app/controllers/TransactionController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -92,8 +103,16 @@ routes.get('/deliveries', DeliveryController.index);
 routes.get('/deliveries/:id', DeliveryController.show);
 routes.put('/deliveries/:id', DeliveryController.update);
 routes.delete('/deliveries/:id', DeliveryController.destroy);
-
 routes.delete('/problem/:id/cancel-delivery', DeliveryProblem.destroy);
+
+// Rotas de pagamento
+routes.get('/products', ProductController.index);
+routes.get('/products/:id', ProductController.show);
+routes.get('/cards', CardController.index);
+routes.post('/checkouts', CheckoutController.store);
+routes.get('/checkouts/:id', CheckoutController.show);
+routes.get('/stocks/:id', StockController.show);
+routes.delete('/transactions/:id', TransactionController.destroy);
 
 
 
