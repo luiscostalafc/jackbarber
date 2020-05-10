@@ -29,15 +29,15 @@ export const Form = styled.ScrollView.attrs({
 `;
 
 export const FormInput = styled(Input)`
-	margin-bottom: 3px;
+	margin-bottom: 10px;
 `;
 
 export const SubmitButton = styled(Button)`
-	margin-top: 3px;
+	margin-top: 10px;
 	background: #008b45;
 `;
 
 export const LogoutButton = styled(Button)`
-	margin-top: 3px;
+	margin-top: 10px;
 	background: #f64c75;
 `;

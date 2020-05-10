@@ -28,7 +28,6 @@ export default function Profile() {
 
 	const [name, setName] = useState(profile.name);
 	const [email, setEmail] = useState(profile.email);
-	const [phone, setPhone] = useState(profile.phone);
 	const [oldPassword, setOldPassword] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
@@ -44,7 +43,6 @@ export default function Profile() {
 			updateProfileRequest({
 				name,
 				email,
-				phone,
 				oldPassword,
 				password,
 				confirmPassword,
@@ -71,17 +69,6 @@ export default function Profile() {
 						onSubmitEditing={() => emailRef.current.focus()}
 						value={name}
 						onChangeText={setName}
-					/>
-
-					<FormInput
-						icon="phone"
-						autoCorrect={false}
-						autoCapitalize="none"
-						placeholder="Seu telefone com DDD"
-						returnKeyType="next"
-						onSubmitEditing={() => emailRef.current.focus()}
-						value={phone}
-						onChangeText={setPhone}
 					/>
 
 					<FormInput
