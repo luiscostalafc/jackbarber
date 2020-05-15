@@ -32,7 +32,7 @@ export default function SelectDateTime({ navigation }) {
 	}, [date, provider.id]);
 
 	function handleSelectHour(time) {
-		navigations.navigate('Home', { provider, time, });
+		navigations.navigate('Confirm', { provider, time, });
 	}
 
 	return (

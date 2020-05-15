@@ -40,7 +40,7 @@ export default function Confirm({ navigation }) {
 				<Avatar
 					source={{
 						uri: provider.avatar
-							? provider.avatar.url
+							? provider.avatar.url.replace('localhost', '192.168.0.5')
 							: `https://api.adorable.io/avatar/50/${provider.name}.png`,
 					}}
 				/>
@@ -62,7 +62,7 @@ Confirm.navigationOptions = ({ navigation }) => ({
 	headerLeft: () => (
 		<TouchableOpacity
 			onPress={() => {
-				navigation.goBack();
+				navigations.navigate('Dashboard');
 			}}
 		>
 			<Icon name="chevron-left" size={20} color="#fff" />
