@@ -26,9 +26,9 @@ function* signIn({ payload }) {
 
 function* signUp({ payload }) {
 	try {
-		const { name, email, password} = payload;
+		const { name, email, password, phone, zipcode, street, number, complement, district, city, state} = payload;
 
-		yield call(api.post, '/users', { name, email, password});
+		yield call(api.post, '/users', { name, email, password, phone, zipcode, street, number, complement, district, city, state});
 
 		yield put(AuthActions.signUpSuccess());
 

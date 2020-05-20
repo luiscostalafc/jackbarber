@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { View, ActivityIndicator, StyleSheet } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import Geolocation from '@react-native-community/geolocation';
-import Geocoder from 'react-native-geocoding';
+import Geolocation from 'react-native-geolocation-service';
+//import Geocoder from 'react-native-geocoding';
 import markerImage from '../../assets/logo1.png';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from "../../services/api";
+
 
 
 const styles = StyleSheet.create({
@@ -27,6 +28,8 @@ function Geo() {
 	const [loading, setLoading] = useState(true);
 	const [coordinates, setCoordinates] = useState({});
 	const [points, setPoints] = useState([]);
+
+
 
 	useEffect(() => {
 		Geolocation.getCurrentPosition(
@@ -81,8 +84,8 @@ function Geo() {
 			initialRegion={{
 				latitude: coordinates.latitude,
 				longitude: coordinates.longitude,
-				latitudeDelta: 0.0080,
-				longitudeDelta: 0.0080,
+				latitudeDelta: 0.0100,
+				longitudeDelta: 0.0100,
 			}}
 			style={styles.map}
 			showsUserLocation
@@ -91,13 +94,18 @@ function Geo() {
 			{renderPoints()}
 			</MapView>
 		)}
+
+
 			</View>
+
+
 	);
 }
  Geo.navigationOptions = {
 tabBarLabel: 'Express',
 tabBarIcon: ({ tintColor }) => (
 <Icon name="directions-run" size={20} color={tintColor} />
+
 	),
 	}
 

@@ -86,6 +86,8 @@ export default function Dashboard() {
 						<strong>{time.time}</strong>
 						<span>
 							{time.appointment ? time.appointment.user.name : 'Em aberto'}
+							<br/>
+							{time.appointment ? time.appointment.user.phone : ''}
 						</span>
 					</Time>
 				))}

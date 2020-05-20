@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
-import Category from '../models/Category';
+//import Category from '../models/Category';
 
 //import EnrollmentMail from '../jobs/EnrollmentMail';
 //import Queue from '../../lib/Queue';
@@ -16,6 +16,15 @@ class UserController {
 			password: Yup.string()
 				.required()
 				.min(6),
+			phone: Yup.string()
+				.required(),
+			zipcode: Yup.string(),
+			street: Yup.string().required(),
+			number: Yup.string().required(),
+			complement: Yup.string(),
+			district: Yup.string(),
+			city: Yup.string().required(),
+			state: Yup.string().required()
 
 		});
 
@@ -29,14 +38,7 @@ class UserController {
 			return res.status(400).json({ error: 'User already exists' });
 		}
 
-		const { id, name, email, provider} = await User.create(
-			req.body,
-			{
-
-
-			}
-
-			);
+		const { id, name, email, phone, zipcode, street, number, complement, district, city, state, provider } = await User.create(req.body);
 
 
 		// await Queue.add(EnrollmentMail.key, {
@@ -50,6 +52,14 @@ class UserController {
 			name,
 			email,
 			provider,
+			phone,
+			zipcode,
+			street,
+			number,
+			complement,
+			district,
+			city,
+			state
 		});
 	}
 
@@ -66,6 +76,14 @@ class UserController {
 			confirmPassword: Yup.string().when('password', (password, field) =>
 				password ? field.required().oneOf([Yup.ref('password')]) : field
 			),
+			phone: Yup.string(),
+			zipcode: Yup.string(),
+			street: Yup.string(),
+			number: Yup.string(),
+			complement: Yup.string(),
+			district: Yup.string(),
+			city: Yup.string(),
+			state: Yup.string(),
 		});
 
 		if (!(await schema.isValid(req.body))) {
@@ -91,7 +109,7 @@ class UserController {
 
 		await user.update(req.body);
 
-		const { id, name, email: NewEmail, avatar, category } = await User.findByPk(
+		const { id, name, email: NewEmail, avatar, phone, zipcode, street, number, complement, district, city, state } = await User.findByPk(
 			req.userId,
 			{
 				include: [
@@ -100,12 +118,6 @@ class UserController {
 						as: 'avatar',
 						attributes: ['id', 'path', 'url'],
 					},
-					{
-						model: Category,
-						as: 'category',
-						attributes: ['id', 'name'],
-					},
-
 
 				],
 			}
@@ -116,7 +128,14 @@ class UserController {
 			name,
 			email: NewEmail,
 			avatar,
-			category,
+			phone,
+			zipcode,
+			street,
+			number,
+			complement,
+			district,
+			city,
+			state
 		});
 	}
 }

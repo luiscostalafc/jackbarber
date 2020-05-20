@@ -29,8 +29,9 @@ export default function Confirm({ navigation }) {
 			provider_id: provider.id,
 			date: time,
 
-		});
-    navigations.navigate('Dashboard');
+		},navigations.navigate('Dashboard'));
+
+
 
 	}
 
@@ -40,7 +41,7 @@ export default function Confirm({ navigation }) {
 				<Avatar
 					source={{
 						uri: provider.avatar
-							? provider.avatar.url.replace('localhost', '192.168.0.5')
+							? provider.avatar.url.replace('localhost', '192.168.0.6')
 							: `https://api.adorable.io/avatar/50/${provider.name}.png`,
 					}}
 				/>
@@ -62,7 +63,7 @@ Confirm.navigationOptions = ({ navigation }) => ({
 	headerLeft: () => (
 		<TouchableOpacity
 			onPress={() => {
-				navigations.navigate('Dashboard');
+				navigation.navigate('Dashboard');
 			}}
 		>
 			<Icon name="chevron-left" size={20} color="#fff" />

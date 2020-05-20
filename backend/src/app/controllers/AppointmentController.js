@@ -7,6 +7,7 @@ import Appointment from '../models/Appointment';
 import Notification from '../schemas/Notification';
 
 import CancellationMail from '../jobs/CancellationMail';
+import CreationDeliveryMail from '../jobs/CreationDeliveryMail';
 import Queue from '../../lib/Queue';
 
 class AppointmentController {
@@ -23,7 +24,8 @@ class AppointmentController {
 				{
 					model: User,
 					as: 'provider',
-					attributes: ['id', 'name'],
+					attributes: ['id', 'name', 'phone', 'zipcode', 'street',
+					'number','complement','district','city','state'],
 					include: [
 						{
 							model: File,
@@ -111,17 +113,30 @@ class AppointmentController {
 			"'dia' dd 'de' MMMM', às ' H:mm'h'",
 			{ locale: pt }
 		);
+		await Queue.add(CreationDeliveryMail.key, {
+			appointment, user
+		});
+
 
 		const notification = await Notification.create({
-			content: `Novo agendamento de ${user.name} para ${formatedDate}`,
+			content: `Novo agendamento de ${user.name} - ${user.phone}
+			na ${user.street} -
+			Número: ${user.number} -
+			Complemento: ${user.complement} -
+			Bairro: ${user.district} -
+			Cidade: ${user.city} -
+			para ${formatedDate}`,
 			user: provider_id,
 		});
+
+
 
 		const ownerSocket = req.connectedUsers[provider_id];
 
 		if (ownerSocket) {
 			req.io.to(ownerSocket).emit('notification', notification);
 		}
+
 
 		return res.json(appointment);
 	}

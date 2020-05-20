@@ -1,3 +1,5 @@
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import Mail from '../../lib/Mail';
 
 class CreationDeliveryMail {
@@ -6,21 +8,30 @@ class CreationDeliveryMail {
 	}
 
 	async handle({ data }) {
-		const { deliveryman, product, recipient } = data;
+		const { appointment, user} = data;
 
-		await Mail.sendMail({
-			to: `${deliveryman.name} <${deliveryman.email}>`,
+		await Mail.sendMain({
+			to: `${appointment.provider.name} <${appointment.provider.email}>`,
 			subject: 'Novo atendimento cadastrado',
 			template: 'creationDelivery',
 			context: {
-				deliveryman: deliveryman.name,
-				product,
-				recipient: recipient.name,
-				city: recipient.city,
-				state: recipient.state,
-				street: recipient.street,
-				number: recipient.number,
-				zip_code: recipient.zip_code,
+				provider: appointment.provider.name,
+				user: appointment.user.name,
+				date: format(
+					parseISO(appointment.date),
+					"'dia' dd 'de' MMMM', às' H:mm'h'",
+					{
+						locale: pt,
+					}
+				),
+				phone: user.phone,
+				street: user.street,
+				number: user.number,
+				district: user.district,
+				city: user.city,
+				state: user.state,
+				zipcode: user.zipcode,
+
 			},
 		});
 	}
