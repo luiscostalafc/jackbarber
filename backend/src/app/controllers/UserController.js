@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
-//import Category from '../models/Category';
+import Category from '../models/Category';
 
 //import EnrollmentMail from '../jobs/EnrollmentMail';
 //import Queue from '../../lib/Queue';
@@ -118,6 +118,11 @@ class UserController {
 						as: 'avatar',
 						attributes: ['id', 'path', 'url'],
 					},
+					{
+						model: Category,
+						as: 'categoria',
+						attributes: ['id', 'name'],
+					},
 
 				],
 			}
@@ -128,6 +133,7 @@ class UserController {
 			name,
 			email: NewEmail,
 			avatar,
+			categoria,
 			phone,
 			zipcode,
 			street,
