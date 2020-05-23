@@ -109,7 +109,7 @@ class UserController {
 
 		await user.update(req.body);
 
-		const { id, name, email: NewEmail, avatar, phone, zipcode, street, number, complement, district, city, state } = await User.findByPk(
+		const { id, name, email: NewEmail, avatar, category, phone, zipcode, street, number, complement, district, city, state } = await User.findByPk(
 			req.userId,
 			{
 				include: [
@@ -120,7 +120,7 @@ class UserController {
 					},
 					{
 						model: Category,
-						as: 'categoria',
+						as: 'category',
 						attributes: ['id', 'name'],
 					},
 
@@ -133,7 +133,7 @@ class UserController {
 			name,
 			email: NewEmail,
 			avatar,
-			categoria,
+			category,
 			phone,
 			zipcode,
 			street,
