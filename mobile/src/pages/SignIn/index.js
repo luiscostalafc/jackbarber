@@ -3,6 +3,7 @@ import { Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
+import { View, Linking } from 'react-native';
 
 import logo from '~/assets/logo.png';
 import Background from '~/components/Background';
@@ -65,6 +66,10 @@ export default function SignIn({ navigation }) {
 
 				<SignLink onPress={() => navigation.navigate('SignUp')}>
 					<SignLinkText>Criar conta gratuita</SignLinkText>
+					<View />
+					<SignLinkText style={{ color: "#EEDD82" }} onPress={() => Linking.openURL('https://salaojack.com/')}>
+						Visite nosso site!
+					</SignLinkText>
 				</SignLink>
 			</Container>
 		</Background>

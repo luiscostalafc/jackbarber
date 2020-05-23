@@ -41,6 +41,7 @@ export default function SelectProvider({ navigation }) {
 								}}
 							/>
 							<Name>{provider.name}</Name>
+							<Name style={{color:"#EEDD82"}}>{provider.category}</Name>
 						</Provider>
 					)}
 				/>
