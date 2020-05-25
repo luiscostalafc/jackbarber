@@ -38,6 +38,10 @@ target 'mobile' do
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing

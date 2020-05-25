@@ -7,14 +7,16 @@
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
+      android:icon="@drawable/icon"
+      android:roundIcon="@drawable/icon"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
 			<meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyCehC1yRfumAO8cYDZEQBC98kYFJdXWG_w"/>
       <activity
+			  android:launchMode="singleTop"
+			  android:theme="@style/SplashTheme"
         android:name=".MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"

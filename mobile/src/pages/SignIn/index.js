@@ -66,7 +66,9 @@ export default function SignIn({ navigation }) {
 
 				<SignLink onPress={() => navigation.navigate('SignUp')}>
 					<SignLinkText>Criar conta gratuita</SignLinkText>
-					<View />
+
+					<View style={{height:20}} />
+
 					<SignLinkText style={{ color: "#EEDD82" }} onPress={() => Linking.openURL('https://salaojack.com/')}>
 						Visite nosso site!
 					</SignLinkText>
