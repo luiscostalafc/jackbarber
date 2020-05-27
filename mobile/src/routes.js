@@ -1,27 +1,20 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import Dashboard from './pages/Dashboard';
 import Geo from './pages/Geo';
+import Confirm from './pages/New/Confirm';
+import SelectDateTime from './pages/New/SelectDateTime';
+import SelectProvider from './pages/New/SelectProvider';
+import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SingUp';
 
-
-
-import SelectProvider from './pages/New/SelectProvider';
-import SelectDateTime from './pages/New/SelectDateTime';
-import Confirm from './pages/New/Confirm';
-
-
-import Dashboard from './pages/Dashboard';
-import Profile from './pages/Profile';
-
-
 export default (signedIn = false) =>
 	createAppContainer(
-
 		createSwitchNavigator(
 			{
 				Sign: createSwitchNavigator({
@@ -31,7 +24,6 @@ export default (signedIn = false) =>
 
 				App: createBottomTabNavigator(
 					{
-
 						Dashboard,
 						New: {
 							screen: createStackNavigator(
@@ -77,9 +69,7 @@ export default (signedIn = false) =>
 								backgroundColor: '#323239',
 							},
 						},
-					},
-
-
+					}
 				),
 			},
 			{

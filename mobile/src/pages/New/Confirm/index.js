@@ -1,19 +1,16 @@
 import React, { useMemo } from 'react';
-import { formatRelative, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import api from '~/services/api';
-import Background from '~/components/Background';
+import { formatRelative, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
+import api from '~/services/api';
 import navigations from '~/services/navigations';
 
+import Background from '~/components/Background';
 
 import { Container, Avatar, Name, Time, SubmitButton } from './styles';
-
-
-
 
 export default function Confirm({ navigation }) {
 	const provider = navigation.getParam('provider');
@@ -25,14 +22,14 @@ export default function Confirm({ navigation }) {
 	);
 
 	async function handleAddAppointment() {
-		await api.post('appointments', {
-			provider_id: provider.id,
-			date: time,
-
-		},navigations.navigate('Dashboard'));
-
-
-
+		await api.post(
+			'appointments',
+			{
+				provider_id: provider.id,
+				date: time,
+			},
+			navigations.navigate('Dashboard')
+		);
 	}
 
 	return (
@@ -41,7 +38,7 @@ export default function Confirm({ navigation }) {
 				<Avatar
 					source={{
 						uri: provider.avatar
-							? provider.avatar.url.replace('localhost', '192.168.0.6')
+							? provider.avatar.url
 							: `https://api.adorable.io/avatar/50/${provider.name}.png`,
 					}}
 				/>
@@ -70,4 +67,3 @@ Confirm.navigationOptions = ({ navigation }) => ({
 		</TouchableOpacity>
 	),
 });
-

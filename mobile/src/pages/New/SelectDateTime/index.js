@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '~/services/api';
 import navigations from '~/services/navigations';
 
-
 import Background from '~/components/Background';
 import DateInput from '~/components/DateInput';
 
@@ -32,7 +31,7 @@ export default function SelectDateTime({ navigation }) {
 	}, [date, provider.id]);
 
 	function handleSelectHour(time) {
-		navigations.navigate('Confirm', { provider, time, });
+		navigations.navigate('Confirm', { provider, time });
 	}
 
 	return (
@@ -42,7 +41,7 @@ export default function SelectDateTime({ navigation }) {
 				<HourList
 					data={hours}
 					extraData={date}
-					keyExtractor={item => (item.time)}
+					keyExtractor={item => item.time}
 					renderItem={({ item }) => (
 						<Hour
 							onPress={() => handleSelectHour(item.value)}
@@ -69,4 +68,3 @@ SelectDateTime.navigationOptions = ({ navigation }) => ({
 		</TouchableOpacity>
 	),
 });
-

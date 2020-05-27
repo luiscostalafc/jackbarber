@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-
 import api from '~/services/api';
+
 import Background from '~/components/Background';
 
 import { Container, Provider, ProvidersList, Avatar, Name } from './styles';
@@ -36,12 +36,12 @@ export default function SelectProvider({ navigation }) {
 							<Avatar
 								source={{
 									uri: provider.avatar
-										? provider.avatar.url.replace('localhost', '192.168.0.6')
+										? provider.avatar.url
 										: `https://api.adorable.io/avatar/50/${provider.name}.png`,
 								}}
 							/>
 							<Name>{provider.name}</Name>
-							<Name style={{color:"#EEDD82"}}>{provider.category.name}</Name>
+							{/* <Name style={{ color: '#EEDD82' }}>{provider.category.name}</Name> */}
 						</Provider>
 					)}
 				/>
@@ -62,4 +62,3 @@ SelectProvider.navigationOptions = ({ navigation }) => ({
 		</TouchableOpacity>
 	),
 });
-

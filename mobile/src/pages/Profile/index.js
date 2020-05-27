@@ -20,7 +20,6 @@ export default function Profile() {
 	const dispatch = useDispatch();
 	const profile = useSelector(state => state.user.profile);
 
-
 	const emailRef = useRef();
 	const oldPasswordRef = useRef();
 	const passwordRef = useRef();
