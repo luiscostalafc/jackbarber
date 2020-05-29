@@ -12,10 +12,34 @@ export function signInSuccess(token, user) {
 	};
 }
 
-export function signUpRequest(name, email, password, phone, zipcode, street, number, complement, district, city, state) {
+export function signUpRequest(
+	name,
+	email,
+	password,
+	phone,
+	zipcode,
+	street,
+	number,
+	complement,
+	district,
+	city,
+	state
+) {
 	return {
 		type: '@auth/SIGN_UP_REQUEST',
-		payload: { name, email, password, phone, zipcode, street, number, complement, district, city, state },
+		payload: {
+			name,
+			email,
+			password,
+			phone,
+			zipcode,
+			street,
+			number,
+			complement,
+			district,
+			city,
+			state,
+		},
 	};
 }
 

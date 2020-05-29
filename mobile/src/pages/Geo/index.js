@@ -42,7 +42,7 @@ function Geo() {
 			error => {
 				console.log(error);
 			},
-			{ enableHighAccuracy: true, maximumAge: 10000, timeout: 10000 }
+			{ enableHighAccuracy: true, maximumAge: 10000, timeout: 1000 }
 		);
 	}, []);
 
