@@ -33,7 +33,7 @@
     "pg-hstore": "^2.3.3",
     "react-native-gesture-handler": "^1.6.1",
     "sequelize": "^5.19.7",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "youch": "^2.0.10",
     "yup": "^0.27.0"
   },
