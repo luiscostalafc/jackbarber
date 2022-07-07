@@ -20,7 +20,7 @@
     "google-maps-react": "^2.0.6",
     "immer": "^5.1.0",
     "intl": "^1.2.5",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "numeral": "^2.0.6",
     "pagarme": "^4.8.0",
     "polished": "^3.5.2",
